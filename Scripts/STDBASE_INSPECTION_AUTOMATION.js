@@ -305,7 +305,7 @@ else if(!isEmptyOrNull(rules.action.rangeToCustomField))
 		// call function to post to time accounting
 		inspObj = aa.inspection.getInspection(capId,inspId).getOutput();
 		var inspDate =  inspObj.getInspectionDate().getMonth() + "/" + inspObj.getInspectionDate().getDayOfMonth() + "/" + inspObj.getInspectionDate().getYear();
-		var timeAccountingResult = addTimeAccountingRecordToInspectionV2(capId, inspId, 'Inspection', 'Regular Inspection (R)', inspDate, false);
+		var timeAccountingResult = addTimeAccountingRecordToInspectionV2(capId, inspId, 'Program Related Activity', 'Inspection (R)', inspDate, false);
 		if (timeAccountingResult){
 			logDebug('Successfully added time accounting'); 
 		}else{ 

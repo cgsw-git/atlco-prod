@@ -1,0 +1,204 @@
+{
+  "EnvHealth/Personal Services/*/Application": {
+    "InspectionResultSubmitAfter": [
+      {
+        "preScript": "",
+        "metadata": {
+          "description": "",
+          "operators": ""
+        },
+        "criteria": {
+          "inspectionTypePerformed": [],
+          "inspectionResult": []
+        },
+        "action": {
+		  "postToTimeAccounting": true,
+        },
+        "postScript": ""
+      },
+      {
+        "preScript": "",
+        "metadata": {
+          "description": "",
+          "operators": ""
+        },
+        "criteria": {
+          "inspectionTypePerformed": [],
+          "inspectionResult": [
+            "Unsatisfactory",
+			"Approval to open denied"
+          ]
+        },
+        "action": {
+		  "postToTimeAccounting": true,
+          "inspectionCopyComment": true,
+          "inspectionType": "Preliminary Inspection",
+          "rangeType": "Days",
+          "range": "30",
+          "sameInspector": true,
+          
+        },
+        "postScript": ""
+      }
+    ],
+    "WorkflowTaskUpdateAfter": [
+      {
+        "preScript": "",
+        "metadata": {
+          "description": "",
+          "operators": ""
+        },
+        "criteria": {
+          "taskName": [],
+          "taskStatus": [
+            "Denied",
+			"Withdrawn"
+          ]
+        },
+        "action": {
+          "cancelAllInspections": true
+        },
+        "postScript": ""
+      }
+    ]
+  },
+  "EnvHealth/Personal Services/*/Permit": {
+    "InspectionResultSubmitAfter": [
+      {
+        "preScript": "",
+        "metadata": {
+          "description": "",
+          "operators": ""
+        },
+        "criteria": {
+          "inspectionTypePerformed": [
+			"Inspection"
+          ],
+          "inspectionResult": [
+            "Satisfactory",
+			"Approval to open" ,
+			"Conditionally Satisfactory",
+			"NJDEP – NFA Issued"
+          ]
+        },
+        "action": {
+		  "postToTimeAccounting": true,
+		  "inspectionCopyComment": true,
+		  "inspectionType": "Inspection",
+          "rangeTypeToCustomField": "Inspection Interval Unit",
+          "rangeToCustomField": "Inspection Interval",
+          "rangeType": "Custom Field",
+          "range": "Custom Field",
+          "basedOnScheduledDate": true,
+          "basedOnResultDate": false,
+		  "assignment":"Record",
+          "sameInspector": false
+       },
+        "postScript": ""
+      },
+      {
+        "preScript": "",
+        "metadata": {
+          "description": "",
+          "operators": ""
+        },
+        "criteria": {
+          "inspectionTypePerformed": [
+			"Reinspection"
+          ],
+          "inspectionResult": [
+            "Satisfactory",
+			"Approval to open" ,
+			"Conditionally Satisfactory",
+			"NJDEP – NFA Issued"
+          ]
+        },
+        "action": {
+		  "postToTimeAccounting": true,
+		  "inspectionCopyComment": true,
+		  "inspectionType": "Inspection",
+          "rangeTypeToCustomField": "Inspection Interval Unit",
+          "rangeToCustomField": "Inspection Interval",
+          "rangeType": "Custom Field",
+          "range": "Custom Field",
+          "basedOnScheduledDate": true,
+          "basedOnResultDate": false,
+		  "assignment":"Record",
+          "sameInspector": false
+       },
+        "postScript": ""
+      },
+      {
+        "preScript": "",
+        "metadata": {
+          "description": "",
+          "operators": ""
+        },
+        "criteria": {
+          "inspectionTypePerformed": [],
+          "inspectionResult": [
+            "Unsatisfactory",
+			"Temporarily Closed"
+          ]
+        },
+        "action": {
+		  "inspectionType": "Reinspection",
+		  "inspectionCopyComment": true,
+		  "postToTimeAccounting": true,
+          "rangeType": "Days",
+          "range": "30",
+          "sameInspector": true
+        },
+        "postScript": ""
+      }
+    ],
+    "WorkflowTaskUpdateAfter": [
+      {
+        "preScript": "",
+        "metadata": {
+          "description": "",
+          "operators": ""
+        },
+        "criteria": {
+          "taskName": [
+            "Permit Status"
+          ],
+          "taskStatus": [
+            "Inactive"
+          ]
+        },
+        "action": {
+          "cancelAllInspections": true
+        },
+        "postScript": ""
+      }
+    ],
+	"ConvertToRealCAPAfter": [
+      {
+        "preScript": "",
+        "metadata": {
+          "description": "",
+          "operators": ""
+        },
+        "criteria": {
+		  "disabled": true,
+          "taskName": [],
+          "taskStatus": []
+        },
+        "action": {
+		  "inspectionType": "Regular Inspection",
+          "rangeTypeToCustomField": "Inspection Interval Unit",
+          "rangeToCustomField": "Inspection Interval",
+          "rangeType": "Custom Field",
+          "range": "Custom Field",
+		  "basedOnScheduledDate": false,
+          "basedOnResultDate": false,
+		  "assignment":"Record",
+          "sameInspector": false
+       },
+        "postScript": ""
+      }
+    ]
+	
+  }
+}
