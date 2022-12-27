@@ -1,5 +1,5 @@
-showDebug = true;
-showMessage = true;
+showDebug = false;
+showMessage = false;
 // if (currentUserID == "ADMIN") {
    // showDebug = false;
    // showMessage = false;
